@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Reader - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="index.html"><img
+                    src="https://t4.ftcdn.net/jpg/03/03/25/95/360_F_303259500_YRo4yGlHJ57sPVIHyE9bg5I1Plw3miuB.jpg"
+                    alt="Manga Reader Logo" class="h-8"></a>
+            <div class="flex items-center space-x-2">
+                <div class="search-icon"
+                    style="background-image: url('https://cdn.pixabay.com/photo/2017/01/13/01/22/magnifying-glass-1976105_1280.png'); background-size: cover; width: 24px; height: 24px;">
+                </div>
+                <input type="text" id="searchBar" placeholder="Search manga..."
+                    class="border border-gray-300 rounded-md p-1.5 w-48 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <select class="border border-gray-300 rounded-md p-1.5 text-sm hidden md:block">
+                <option>English</option>
+                <option>Español</option>
+                <option>日本語</option>
+            </select>
+            <a href="login.html" class="text-sm text-blue-600 hover:underline">Log in</a>
+            <a href="signup.html" class="text-sm text-blue-600 hover:underline">Sign up</a>
+            <a href="favorites.html" class="text-sm text-blue-600 hover:underline">Favorites</a>
+            <a href="about.html" class="text-sm text-blue-600 hover:underline">About</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-6">
+        <section class="max-w-md mx-auto">
+            <h1 class="text-2xl font-bold text-gray-800 mb-4">Login</h1>
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email"
+                        class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="password"
+                        class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                </div>
+                <button id="loginBtn" class="btn-primary w-full px-4 py-2 rounded-md">Login</button>
+                <p class="mt-4 text-sm text-gray-600">Don't have an account? <a href="signup.html"
+                        class="text-blue-600 hover:underline">Sign up</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center p-4 text-sm">
+        <p>© 2025 Manga Reader. All rights reserved.</p>
+        <div class="mt-2 flex justify-center space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white">Terms of Use</a>
+            <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        const searchBar = document.getElementById('searchBar');
+        searchBar.addEventListener('input', (e) => {
+            window.location.href = `index.html?search=${encodeURIComponent(e.target.value)}`;
+        });
+
+        // Login functionality (simulated)
+        const loginBtn = document.getElementById('loginBtn');
+        loginBtn.addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            if (email && password) {
+                alert('Login successful! (Simulated)');
+                window.location.href = 'index.html';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+
+</html>

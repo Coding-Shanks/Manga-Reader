@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Reader - Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="index.html"><img
+                    src="https://t4.ftcdn.net/jpg/03/03/25/95/360_F_303259500_YRo4yGlHJ57sPVIHyE9bg5I1Plw3miuB.jpg"
+                    alt="Manga Reader Logo" class="h-8"></a>
+            <div class="flex items-center space-x-2">
+                <div class="search-icon"
+                    style="background-image: url('https://cdn.pixabay.com/photo/2017/01/13/01/22/magnifying-glass-1976105_1280.png'); background-size: cover; width: 24px; height: 24px;">
+                </div>
+                <input type="text" id="searchBar" placeholder="Search manga..."
+                    class="border border-gray-300 rounded-md p-1.5 w-48 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <select class="border border-gray-300 rounded-md p-1.5 text-sm hidden md:block">
+                <option>English</option>
+                <option>Español</option>
+                <option>日本語</option>
+            </select>
+            <a href="login.html" class="text-sm text-blue-600 hover:underline">Log in</a>
+            <a href="signup.html" class="text-sm text-blue-600 hover:underline">Sign up</a>
+            <a href="favorites.html" class="text-sm text-blue-600 hover:underline">Favorites</a>
+            <a href="about.html" class="text-sm text-blue-600 hover:underline">About</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4 md:p-6">
+        <section class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-6">
+                <img id="mangaCover" src="" alt="Manga Cover" class="w-full md:w-1/3 h-96 object-cover rounded-lg">
+                <div class="flex-1">
+                    <h1 id="mangaTitle" class="text-2xl font-bold text-gray-800"></h1>
+                    <p id="mangaDescription" class="text-gray-600 mt-2"></p>
+                    <button id="favoriteBtn" class="btn-primary px-4 py-2 rounded-md mt-4"></button>
+                    <h2 class="text-xl font-semibold mt-6 text-gray-800">Chapters</h2>
+                    <ul id="chapterList" class="mt-4 space-y-2"></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center p-4 text-sm">
+        <p>© 2025 Manga Reader. All rights reserved.</p>
+        <div class="mt-2 flex justify-center space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white">Terms of Use</a>
+            <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script>
+        const mangaData = [
+            {
+                title: "Jujutsu Kaisen",
+                cover: "https://m.media-amazon.com/images/I/81TmHlRleJL.jpg",
+                description: "A high school student gains cursed powers and joins a sorcerer organization.",
+                chapters: [
+                    {
+                        name: "Chapter 1",
+                        pages: [
+                            "https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/9/g/l/medium-manga-panel042-jujutsu-sorcerers-jujutsu-kaisen-anime-original-imagh66cgwxzsgum.jpeg?q=20&crop=false",
+                            "https://i.pinimg.com/736x/be/80/77/be80778def9d181aefc8e13d5660fe5a.jpg"
+                        ]
+                    },
+                    {
+                        name: "Chapter 2",
+                        pages: [
+                            "https://i.pinimg.com/736x/ae/27/05/ae2705ae4ebb8dc6efa12ee38af675d3.jpg"
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "One Piece",
+                cover: "https://jumpichiban.com/cdn/shop/files/ONEPIECE106MangaComicBook.jpg?v=1738181523",
+                description: "A pirate crew searches for the legendary treasure, One Piece.",
+                chapters: [
+                    {
+                        name: "Chapter 1",
+                        pages: [
+                            "https://static0.cbrimages.com/wordpress/wp-content/uploads/2022/07/One-Piece-Chapter-1055-Shanks-Luffy-Haki.jpg",
+                            "https://i.pinimg.com/736x/14/67/f1/1467f1d2d11bb1df1b4ef47fc8485846.jpg"
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "Blue Lock",
+                cover: "https://bluelock-anime-en.com/wp-content/themes/anime/assets/images/mv241103_sp.jpg",
+                description: "A soccer training program aims to create the ultimate striker.",
+                chapters: [
+                    {
+                        name: "Chapter 1",
+                        pages: [
+                            "https://i.pinimg.com/736x/58/22/c9/5822c9511c5ab6996fce811e07844388.jpg",
+                            "https://i.pinimg.com/736x/4a/25/4a/4a254a1b21389e482a08120ca3d7f491.jpg"
+                        ]
+                    }
+                ]
+            },
+            {
+                title: "Solo Leveling",
+                cover: "https://cdn.oneesports.gg/cdn-data/2024/04/Anime_SoloLeveling_Arise_JinwooSung_HaeInCha_ChoiJongIn_BloodRedCommanderIgris_Tusk.jpg",
+                description: "A weak hunter rises to power in a world of dungeons and monsters.",
+                chapters: [
+                    {
+                        name: "Chapter 1",
+                        pages: [
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG5eMd_Ws1hGzRjYLxUTTMoXDPjO1E5cxBHn8N3U6nqNdj3Ad-XTTM4Sp2dtkdtbWbSx4&usqp=CAU",
+                            "https://www.centralcomics.com/wp-content/uploads/2023/11/Solo_Leveling_6_interior-8.jpg"
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // Load favorites from localStorage
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        // Get manga index from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const mangaIndex = parseInt(urlParams.get('manga')) || 0;
+
+        // DOM Elements
+        const mangaTitle = document.getElementById('mangaTitle');
+        const mangaCover = document.getElementById('mangaCover');
+        const mangaDescription = document.getElementById('mangaDescription');
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        const chapterList = document.getElementById('chapterList');
+        const searchBar = document.getElementById('searchBar');
+
+        // Populate manga details
+        function populateDetails() {
+            if (mangaIndex >= 0 && mangaIndex < mangaData.length) {
+                const manga = mangaData[mangaIndex];
+                mangaTitle.textContent = manga.title;
+                mangaCover.src = manga.cover;
+                mangaDescription.textContent = manga.description;
+                favoriteBtn.textContent = favorites.includes(manga.title) ? 'Remove from Favorites ★' : 'Add to Favorites ☆';
+                chapterList.innerHTML = '';
+                manga.chapters.forEach((chapter, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="index.html?manga=${mangaIndex}&chapter=${index}" class="text-blue-600 hover:underline">${chapter.name}</a>`;
+                    chapterList.appendChild(li);
+                });
+            }
+        }
+
+        // Search functionality
+        searchBar.addEventListener('input', (e) => {
+            window.location.href = `index.html?search=${encodeURIComponent(e.target.value)}`;
+        });
+
+        // Favorite button
+        favoriteBtn.addEventListener('click', () => {
+            const title = mangaData[mangaIndex].title;
+            if (favorites.includes(title)) {
+                favorites = favorites.filter(t => t !== title);
+                favoriteBtn.textContent = 'Add to Favorites ☆';
+            } else {
+                favorites.push(title);
+                favoriteBtn.textContent = 'Remove from Favorites ★';
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        });
+
+        // Initialize
+        populateDetails();
+    </script>
+</body>
+
+</html>
