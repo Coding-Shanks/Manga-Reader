@@ -22,8 +22,7 @@ Welcome to **Manga Reader**, a sleek and modern web-based manga reading platform
 
 ## 🚀 Live Demo
 
-🔗 [**View Live Demo**](#)  
-*(Add your Netlify, Vercel, or GitHub Pages link here)*
+🔗 [**View Live Demo**](https://manga-reader-sage.vercel.app/)
 
 ---
 
