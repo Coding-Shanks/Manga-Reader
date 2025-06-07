@@ -31,7 +31,7 @@ Welcome to **Manga Reader**, a sleek and modern web-based manga reading platform
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/manga-reader.git
+git clone https://github.com/Coding-Shanks/Manga-Reader.git
 cd manga-reader
 ````
 
